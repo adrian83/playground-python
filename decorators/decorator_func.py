@@ -1,9 +1,10 @@
 
+from base import func_invocation_info
+
 
 def log(func):
     def wrapper(*args, **kwargs):
-        print("Exectuing {0} with params {1} {2}"
-              .format(func.__name__, args, kwargs))
+        print(func_invocation_info(func, *args, **kwargs))
         return func(*args, **kwargs)
     return wrapper
 
@@ -19,8 +20,8 @@ do_something("John", "Doe")
 def log2(level, file_name):
     def wrapper1(func):
         def wrapper2(*args, **kwargs):
-            print("[{0}] [{1}] Exectuing {2} with params {3} {4}"
-                  .format(level, file_name, func.__name__, args, kwargs))
+            info = func_invocation_info(func, *args, **kwargs)
+            print("[{0}] [{1}] {2}".format(level, file_name, info))
             return func(*args, **kwargs)
         return wrapper2
     return wrapper1
