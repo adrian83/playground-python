@@ -1,5 +1,4 @@
-
-from base import func_invocation_info
+from base import func_invocation_info, introduce
 
 
 def log(func):
@@ -10,11 +9,14 @@ def log(func):
 
 
 @log
-def do_something(first_name, last_name):
-    print("{0} {1}".format(first_name, last_name))
+def introduce_1(first_name, last_name, **info):
+    print("PERSONAL DATA")
+    introduce(first_name, last_name, **info)
+    print("")
 
 
-do_something("John", "Doe")
+introduce_1("William", "Shakespeare", Father="John Shakespeare",
+            Mother="Mary Arden")
 
 
 def log2(level, file_name):
@@ -28,17 +30,23 @@ def log2(level, file_name):
 
 
 @log2("INFO", "decorators_func.py")
-def do_something_usefull(first_name, last_name):
-    print("{0} {1}".format(first_name, last_name))
+def introduce_2(first_name, last_name, **info):
+    print("PERSONAL DATA")
+    introduce(first_name, last_name, **info)
+    print("")
 
 
-do_something_usefull("Wiliam", "Shakespear")
+introduce_2("William", "Shakespeare", Father="John Shakespeare",
+            Mother="Mary Arden")
 
 
 @log2("INFO", "decorators_func.py")
 @log
-def do_something_else(first_name, last_name):
-    print("{0} {1}".format(first_name, last_name))
+def introduce_3(first_name, last_name, **info):
+    print("PERSONAL DATA")
+    introduce(first_name, last_name, **info)
+    print("")
 
 
-do_something_else("Wiliam", "Shakespear")
+introduce_3("William", "Shakespeare", Father="John Shakespeare",
+            Mother="Mary Arden")
