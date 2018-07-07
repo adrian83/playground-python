@@ -1,17 +1,20 @@
 import types
-from datetime import datetime
+import time
 
 info_format = "Executing '{0}' with params: {1} {2}"
-time_format = "Execution of '{0}' took {1} microsecond(s)"
+time_format = "Execution of '{0}' took {1} millisecond(s)"
+
+
+now_in_ms = lambda: int(round(time.time() * 1000))
 
 
 def func_invocation_info(call, *args, **kwargs):
     nameable = call if isinstance(call, types.FunctionType) else call.__class__
     argsStr = ", ".join(args)
     kwargsStr = ", ".join(["{0}={1}".format(k, v) for k, v in kwargs.items()])
-    start = datetime.now().microsecond
+    start = now_in_ms()
     argsInfo = info_format.format(nameable.__name__, argsStr, kwargsStr)
-    end = datetime.now().microsecond
+    end = now_in_ms()
     timeInfo = time_format.format(nameable.__name__, end-start)
     return "{0}\n{1}".format(argsInfo, timeInfo)
 
