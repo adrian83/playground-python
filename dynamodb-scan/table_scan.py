@@ -43,7 +43,8 @@ if __name__ == "__main__":
     table = dynamoDB.Table(tableName)
 
     count = 0
-    for elem in scan_all(table):
+    for item in scan_all(table):
+        # processing items goes here
         count += 1
 
     print("Items processed: {0}".format(count))
