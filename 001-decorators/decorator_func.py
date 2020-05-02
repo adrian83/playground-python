@@ -9,13 +9,11 @@ def log(func):
 
 
 @log
-def introduce_1(first_name, last_name, **info):
-    print("PERSONAL DATA")
+def introduce_ex1(first_name, last_name, **info):
     introduce(first_name, last_name, **info)
-    print("")
 
 
-introduce_1("William", "Shakespeare", Father="John Shakespeare",
+introduce_ex1("William", "Shakespeare", Father="John Shakespeare",
             Mother="Mary Arden")
 
 
@@ -29,24 +27,20 @@ def log2(level, file_name):
     return wrapper1
 
 
-@log2("INFO", "decorators_func.py")
-def introduce_2(first_name, last_name, **info):
-    print("PERSONAL DATA")
+@log2("INFO", "decorator_func.py")
+def introduce_ex2(first_name, last_name, **info):
     introduce(first_name, last_name, **info)
-    print("")
 
 
-introduce_2("William", "Shakespeare", Father="John Shakespeare",
+introduce_ex2("William", "Shakespeare", Father="John Shakespeare",
             Mother="Mary Arden")
 
 
-@log2("INFO", "decorators_func.py")
+@log2("INFO", "decorator_func.py")
 @log
-def introduce_3(first_name, last_name, **info):
-    print("PERSONAL DATA")
+def introduce_ex3(first_name, last_name, **info):
     introduce(first_name, last_name, **info)
-    print("")
 
 
-introduce_3("William", "Shakespeare", Father="John Shakespeare",
+introduce_ex3("William", "Shakespeare", Father="John Shakespeare",
             Mother="Mary Arden")
